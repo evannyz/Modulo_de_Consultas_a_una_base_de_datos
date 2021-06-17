@@ -1,0 +1,38 @@
+Evidencia “DÍA 3 SEMANA 8” del 16/06:
+Crear una base de datos y 2 o 3 tablas.
+
+1Ra Clase de Sql, se realiza un ejercicio basico para crear una base de datos y sus respectivas tablas 
+
+Ejercicio en SQL Workbench, primera creación de una base de datos ------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create database primerabd char set utf8; //Creación de una base de datos con sistema de lectura de datos utf8
+use primerabd;				//Comando para usar la base de datos
+
+create table primeraTabla(		//Creación primera tabla
+	idTabla int auto_increment,
+    nombre varchar(30),
+    apellidoP varchar(30),
+    fechaNacimiento date,
+    primary key(idTabla)
+);
+
+create table segundaTabla(		//Creación segunda tabla
+	id_tabla int auto_increment,
+    nombre varchar(10),
+    apellido varchar(20),
+    identificador int,
+    relato text,
+    primary key(id_tabla)
+);
+
+create table terceraTabla(		//Creacion tercera tabla
+	idTabla2 int auto_increment,
+    peso double,
+    divisa decimal(12,5),
+    tamaño smallint,
+    función text,
+    
+    primary key(idTabla2)
+    
+);
