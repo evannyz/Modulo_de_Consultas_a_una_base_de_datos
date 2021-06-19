@@ -1,0 +1,14 @@
+4Ta Clase de Base de datos, Se realiza la seleccion de información de los distintos registros dentro de una tabla
+mediante la implementación de  diferentes clausulas
+
+
+Documentación: 
+
+Actualizar los registros de una tabla
+https://www.anerbarrena.com/mysql-update-5183/
+
+Realizar consultas a una base de datos
+https://www.anerbarrena.com/mysql-select-consultas-base-datos-5426/
+
+Eliminar registros de una tabla en Mysql
+https://www.anerbarrena.com/mysql-delete-5148/

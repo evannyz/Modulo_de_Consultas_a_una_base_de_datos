@@ -1,0 +1,16 @@
+idTabla2,idLibro,nombreLibro,autor,editorial,edicion,añoPublicacion,categoria,ejemplares
+1,1,"La lanza de Libros",Chespirito,"The Escritors",4,2019-04-04,Infantil,10
+2,2,"El Mota",Sabrinoski,Michis,1,2020-06-05,Suspenso,20
+3,3,"El Suspiro","Gabriel Garcia Perez",Kuma,5,2005-06-06,Comedia,30
+4,4,"Señor de los paltos",Ricky,Rikon,10,1998-09-10,Fantasía,200
+5,5,"Juan Salvador Paloma","Robert Aguirr",Cosmosis,6,2008-02-03,Drama,30
+6,6,Caperucito,"Sergio Lopez",Dingo,12,1999-01-04,Romance,400
+7,7,Capos,"Juan Jose de la Rosa",Pilis,2,2006-06-12,"Novela Historica",25
+8,8,Entremundos,"Lia Cortesoski","Buena Onda",20,1950-12-12,Aventuras,300
+9,9,"Colipan el niño Col","Abraham Lincon",Gringos,7,2009-08-09,Drama,20
+10,10,"Camuel Talio","Lia Cortesoski","Good Wave",14,1950-01-03,"Novela grafica",300
+11,11,"Pillin el perro","Elon Must",Kroki,16,1992-04-01,Cuentos,23
+12,12,"Chala head Chala",Kakaroto,Saiyajin,24,2020-06-15,Comics,22
+13,13,"El valle de los cerezos","Aoi Sho",Ichigo,4,1993-08-20,Historico,40
+14,14,Rayos,"Centella Gabriel",Chispa,12,1994-09-21,Horror,32
+15,15,"Calas de amor","Jose Jose",Crespo,23,1980-07-14,Romance,29
