@@ -1,0 +1,16 @@
+idTabla,idEmpleado,nombre,apellidoP,apellidoM,edad,departamento,cargo,sueldo,fechaIngreso
+1,1,Roberto,Martinez,Cepeda,40,Finanzas,Director,8000000,2008-03-15
+2,2,Juan,Aguirre,Guzman,40,"Recursos Humanos",Secretario,800000,2012-07-02
+3,3,Camilo,Pilar,Perez,30,"Control de Gestion",Analista,1000000,2015-06-04
+4,4,Alejandro,Mouler,Roder,56,Marketing,Promotor,2000000,2000-09-18
+5,5,Sabrina,Campos,Flores,45,Gerencia,Director,10000000,1995-10-04
+6,6,Maria,Carmen,Carmelia,30,Produccion,Operaria,500000,2001-06-20
+7,7,Carla,Rubilar,Rubio,34,Compras,Ejecutiva,12000000,2004-12-01
+8,8,Florencia,House,Muñoz,59,Compras,Directora,5000000,1999-03-05
+9,9,Abigail,King,Cooper,35,Administracion,Contable,1200000,2007-08-04
+10,10,Jennifer,Muñoz,Zapata,44,"Relaciones Publicas",Representante,3000000,2002-09-04
+11,11,Patricia,Polanco,Casas,38,Finanzas,Cajera,400000,2012-05-17
+12,12,Gabriel,Veliz,Vives,43,"Soporte tecnico",Encargado,500000,2010-02-01
+13,13,Rodolfo,Biever,Velazques,42,I+D,Laboratorista,1800000,2005-04-08
+14,14,Raul,Rivera,Ruiz,22,"Nuevos Productos",Catador,500000,2020-01-02
+15,15,Ricardo,Arjona,Gil,56,Almacen,Operario,800000,2015-04-08

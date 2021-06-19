@@ -1,0 +1,17 @@
+3ra Clase de Base de datos,Se cargan registros a dos tablas predefinidas y se añade una tabla nueva
+se epxortan los resultados de la visualización de registros añadidos a las tablas
+
+Se repasa la documentación del día anterior
+
+
+
+Documentacion: 
+
+Tipos de datos en SQL
+https://www.ajpdsoft.com/modules.php?name=News&file=article&sid=349
+
+modificar tablas en mysql workbench
+https://www.youtube.com/watch?v=ZwXVgD0aAEM&ab_channel=ByEdark
+
+alterar registros en workbench
+https://www.youtube.com/watch?v=ULHtArCnfqg&ab_channel=saklar

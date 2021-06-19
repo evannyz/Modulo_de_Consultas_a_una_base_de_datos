@@ -1,0 +1,125 @@
+Evidencia “DÍA 4 SEMANA 8” del 17/06:
+1 - Añadir campos a las tablas creadas en el ejercicio de ayer, luego modificar el tipo de dato de algún campo, y finalmente eliminar un campo.
+2 - Según lo visto en clase crear y realizar lo solicitado:
+-	Crear una base de datos con 2 tablas.
+-	Agregar dos nuevos campos a las tablas ya creadas.
+-	Cambiar el tipo de dato a un campo de la tabla.
+-	Eliminar un campo de cada tabla creada.
+-	Insertar datos en las tablas
+
+
+2da Clase de Sql, continuamos con la creacion de base de datos, se añaden conceptos de moificadores de datos y alteración de tablas
+
+
+
+
+Ejercicio en SQL Workbench, creación de una base de datos y modificación de datos---------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create database ejercicioUno char set utf8;   			-- Se crean base de datos ctrl + enter
+use ejercicioUno;						-- Se usa base de dato para trabajar
+
+create table pruebaUno(						-- Creación de primera tabla con sus respectivos campos
+idTabla5 int auto_increment,
+alto int,
+largo Double,
+ancho float,
+perimetro int,
+primary key(idTabla5)
+);
+
+create table pruebaDos(						-- Creación de segunda tabla con sus respectivos campos
+idTabla6 int auto_increment,
+color varChar (15),
+forma varChar (20),
+fecha Date,
+simbolo text,
+primary key (idTabla6)
+
+);
+
+alter table pruebaUno add column area int;				-- Se añaden 2 campos en las tablas pruebaUno y pruebaDos										
+alter table pruebaDos add column textura text;
+alter table pruebaUno add column volumen Double;
+alter table pruebaDos add column slogan varChar(50);
+
+alter table pruebaUno modify largo float;				-- Se modfifica el tipo de dato en campo largo de tabla pruebaUno
+alter table pruebaDos drop column simbolo;				-- Se borra campo simbolo de la tabla pruebaDos
+
+insert into pruebaUno (alto,largo,ancho,perimetro,area,volumen)		-- Se insertan datos dentro  de los campos de la tabla Uno
+values (50, 5.5 ,2.6, 100, 200, 200.555);
+
+insert into pruebaDos(color,forma,fecha,textura,slogan)				-- Se insertan datos dentro de los campos de la tabla Dos
+values ('rojo','triangular',"1990-03-25",'aspero','sin dolor no hay victoria');
+
+select*from pruebaUno; -- Mirar los registros en la tabla			-- Se verifican datos ingresados dentro de la tabla Uno
+
+
+
+
+
+Se adjunta lo realizado en clases previamente al ejercicio---------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create database primerabd char set utf8; -- Se crean base de datos ctrl + enter
+use primerabd; -- se Usa la base de datos creada 
+
+-- Primera tabla de prueba en base de datos sql
+
+create table primeraTabla( 			-- Creacion de primera tabla con sus respectivos campos
+	idTabla int auto_increment,
+    nombre varchar(30),
+    apellidoP varchar(30),
+    fechaNacimiento date,
+    primary key(idTabla)
+);
+
+												-- Segunda tabla de prueba en base de datos sql
+create table segundaTabla(
+	id_tabla int auto_increment,
+    nombre varchar(10),
+    apellido varchar(20),
+    identificador int,
+    relato text,
+    primary key(id_tabla)
+);
+
+-- Tercera tabla de prueba en base de datos sql
+create table terceraTabla(
+	idTabla2 int auto_increment,
+    peso double,
+    divisa decimal(12,5),
+    tamaño smallint,
+    función text,
+    
+    primary key(idTabla2)
+    
+);
+
+
+alter table segundatabla add column largoCamino int; -- Alteracion segunda tabla se añade columna
+alter table terceratabla add column calculo int; -- Alterancion tercera tabla
+alter table primeratabla add column identificador tinytext; -- Alteracion primera tabla
+
+alter table primeratabla modify identificador varChar(10); -- Modificar el tipo de dato de un campo ingresado primera tabla
+alter table segundatabla modify largoCamino double; -- Modificar el tipo de dato de un campo ingresado segunda tabla
+alter table terceratabla modify calculo tinyint; -- Modificar el tipo de dato de un campo ingresado tercera tabla
+
+alter table segundatabla drop column  nombre; -- Eliminar columna
+alter table terceratabla drop column peso;  -- Eliminar columna
+
+
+create table paraBorrar (
+idTabla3 int auto_increment,
+
+primary key(idTabla3)
+);
+
+create table paraBorrarDos(
+idTabla4 int auto_increment,
+
+primary key(idTabla4)
+);
+
+
+drop table paraBorrarDos;

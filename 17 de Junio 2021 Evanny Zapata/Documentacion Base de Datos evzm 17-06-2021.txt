@@ -1,0 +1,16 @@
+2da Clase de Base de datos, Además de la creación de tablas, exploramos la diferencia entre los tipos de datos
+existentes en SQL, creamos nuevamente una base de datos, con sus respectivas tablas de registros
+pero alteramos el contenido de las tabla, se añaden campos extras a las tablas ya creadas, se eliminan camposy se insertan registros
+
+
+
+Documentacion: 
+
+Tipos de datos en SQL
+https://www.ajpdsoft.com/modules.php?name=News&file=article&sid=349
+
+modificar tablas en mysql workbench
+https://www.youtube.com/watch?v=ZwXVgD0aAEM&ab_channel=ByEdark
+
+alterar registros en workbench
+https://www.youtube.com/watch?v=ULHtArCnfqg&ab_channel=saklar

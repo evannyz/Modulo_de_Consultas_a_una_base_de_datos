@@ -1,0 +1,16 @@
+1Ra Clase de Base de datos, Hoy realizamos una introducción a lo que es una base de datos y sus usos
+creamos nuestras primeras tablas de registros , creando previamente una base de datos con un cierto formato
+de entrada de caracteres y simbolos. Cuando creamos las tablas apreciamos de que partes se componen 
+filas y columnas con registros y campos determinados por nosotros
+
+
+Documentación:
+
+Que es una base de datos
+https://www.oracle.com/cl/database/what-is-database/
+
+Que es SQL 
+https://styde.net/que-es-y-para-que-sirve-sql/
+
+Que es un modelo de base de datos relacional
+https://www.oracle.com/cl/database/what-is-a-relational-database/

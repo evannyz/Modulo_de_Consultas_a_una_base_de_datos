@@ -1,0 +1,16 @@
+idTabla3,idDeportista,nombreDeportista,añosDeportista,nombreDisciplina,añosDeParticipacion,cantidadMedalla,horasPractica,historialMedico,fechaDeUltimaCompetencia,fechaDeProximaCompetencia
+1,1,Juan,30,Futbol,5,10,6,"Sin Lesiones recientes",2021-01-03,2021-10-12
+2,2,Gabriel,20,Karate,10,20,7,"Lesion menor en brazo",2020-12-14,2021-09-14
+3,3,Jose,40,Tenis,20,30,5,"Sin lesiones recientes",2018-06-19,2021-07-06
+4,4,Camila,25,Natacion,20,20,6,"Sin lesiones recientes",2020-12-12,2021-06-19
+5,5,Gabriela,40,Equitación,30,60,8,"Sin lesiones recieentes",2021-03-20,2021-06-24
+6,6,Jose,33,"Tenis de mesa",2,1,4,"Lesion menor pierna derecha",2021-05-22,2021-07-10
+7,7,Juana,22,Ciclismo,6,6,4,"Sin lesiones",2021-04-15,2021-06-28
+8,8,Raaul,62,Arqueria,32,40,3,"Sin Lesiones",2021-01-04,2021-07-02
+9,9,Sabrina,20,Basquetbol,5,5,5,"Lesion menor hombro derecho",2021-04-18,2021-03-06
+10,10,Jorge,40,"Lanzamiento de la bala",20,15,6,"Sin lesiones",2021-02-04,2021-07-07
+11,11,Felipe,25,Maraton,15,10,6,"Sin Lesiones",2020-12-18,2021-11-11
+12,12,Lia,32,"Remo sincronizado",20,20,7,"Lesion media en zona lumbar",2020-09-13,2021-06-20
+13,13,Marcos,30,"Tenis de Mesa",10,5,3,"Lesion mayor rotula pierna izquierda",2020-01-18,2021-12-27
+14,14,Phillipe,40,Cricket,20,32,6,"Sano Sano Como Lechuga",2021-06-01,2021-12-15
+15,15,Anduin,20,Esgrima,10,4,4,"Sin Lesiones",2021-06-02,2021-08-17
