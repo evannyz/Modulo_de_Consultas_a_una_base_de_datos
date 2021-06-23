@@ -1,0 +1,13 @@
+5Ta Clase de Base de datos, Se reliza la acotación de la busqueda de registros con nuevas clausulas y operadores logicos
+dentro de las nuevas clausulas se encuentran NOT IN, BETWEEN Y LIKE y dentro de los operadores logicos <> que corresponde a distinto que.
+
+En el úlitmo ejercicio se combina la clausula not con like para comprobar si el programa me mostraría los resultados que no contuvieran un
+cierto valor entremedio de la cadena a comparar y resulto ser un exito.
+
+Documentación
+
+Consultas en SQL
+https://www.cs.us.es/blogs/bd2013/files/2013/09/Consultas-SQL.pdf
+
+Conceptos basicos en SQL
+https://snmb-admin.readthedocs.io/en/latest/geotalleres/conceptos-sql/conceptos_sql.html

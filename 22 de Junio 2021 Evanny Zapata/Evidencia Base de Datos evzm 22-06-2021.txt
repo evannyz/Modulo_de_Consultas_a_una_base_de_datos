@@ -1,0 +1,232 @@
+Evidencia “DÍA 1 SEMANA 9” del 22/06:
+1 - Utilizando las tablas libro, empleado y la tercera cree las consultas para responder lo siguiente:
+-	Determinar los datos de los libros con más de 100 ejemplares.
+-	Determinar el nombre, apellidoP, apellidoM y cargo de los empleados que tienen un sueldo sobre los $500.000.- y que pertenecen al departamento (ustedes definen el departamento).
+-	Determinar los datos de los libros que son de la primera o segunda edición del autor (definido por ustedes).
+-	Determinar los Autores que tienen alguna de las siguientes ediciones: 1ra, 2da o 3ra.
+-	Determinar los empleados que pertenecen al departamento (definido por ustedes).
+-	Realizar consultas similares para la tercera tabla.
+Si alguna consulta no devuelve ningún registro, cambiar los parámetros para que sí devuelva alguno.
+2 - Realizar consultas en las tres tablas con la cláusula NOT IN.
+3 - Realizar consultas en las tres tablas con el operador <>.
+4 - Realizar consultas en las tres tablas con la cláusula BETWEEN.
+5 - Realizar consultas en las tres tablas con la cláusula LIKE.
+
+
+
+5Ta Clase de Sql, A los registros de la base de datos del día 19/06 se realizan selects de toda la información o de información acotada de las tablas con distintas clausulas y operadores logicos , se adjuntan tablas al final
+
+
+Ejercicio en SQL Workbench, se realiza selects de información con distintas cláusulas y operadores logicos--------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ================================================================================================================================================================== --
+
+-- Ejercicio 5 Busquedas + busquedas en la tabla deportista
+
+select*from libro where ejemplares>=100;											-- Busqueda de los datos donde se tengan más de 100 ejemplares de libros
+select nombre,apellidoP,apellidoM, cargo from empleado where sueldo>=1000000 and departamento in ('Gerencia','I+D','');         -- Busqueda del nombre apellido materno y paterno y cargo de un empleado con un sueldo sobre 1M que pertenezca a Gerencia o a I+D
+select *from libro where ejemplares>=10 and autor in ('Jose Jose','Kakaroto','Elon Must', 'Lia Cortseoski');			-- Busqueda de datos de libro donde el stock sea superior o igual a 10 y pertenezca a ciertos autorea
+select autor from libro where ejemplares=1 or ejemplares=2 or ejemplares =3;							-- Busqueda de autores donde la edicion de su libro sea la primera, segunda o tercera edicion
+select*from empleado where departamento='Finanzas'or departamento='Compras';							-- Busqueda de datos de empleados que pertenezcan al departamento de finanzas o compras
+
+																-- Busquedas en la tabla deportista 
+select cantidadMedalla from deportista where (añosDeportista>10 and añosDeportista<=30)and cantidadMedalla>10;
+select nombreDeportista from deportista where fechaDeUltimaCompetencia>"2021-01-05" and fechaDeUltimaCompetencia<"2021-06-02";
+select fechaDeProximaCompetencia, nombreDeportista from deportista where histrorialMedico in ('Sin lesiones','Sin lesiones recientes','Sin Lesiones','Sin lesiones recieentes');
+select idDeportista from deportista where horasPractica>3;
+-- ================================================================================================================================================================== --
+																-- Busquedas con el operador not in en las tres tablas
+select idDepotista,nombreDeportista,historialMedico from deportista where cantidadMedalla not in (30,5,10,4,8);
+select idTabla,apellidoP,apellidoM,departamento edad from empleado where departamento not in ('Finanzas','Compras');
+select*from libro where autor not in ('Chespirito', 'Sabrinoski','Sergio Lopez');
+
+																-- Busquedas con el operador logico <> en las tres tablas
+select sueldo, departamento, cargo from empleado where edad <> 40 and edad <> 30;
+select*from deportista where añosDeportista <> 20;
+select autor, editorial  from libro where ejemplares <> 20 and autor <> 'Juan Jose de la Rosa';
+
+																-- Busquedas con between entre dos fechas para las tres tablas
+select idTabla3, añosDeportista, nombreDeportista,fechaDeUltimaCompetencia from deportista where fechaDeUltimaCompetencia between "2020-12-31" and "2021-12-31";
+select  idEmpleado, nombre, cargo,fechaIngreso from empleado where fechaIngreso between "2000-01-01" and "2020-01-01";
+select*from libro where añoPublicacion between "1990-01-01" and "2000-01-01";
+
+
+select departamento, cargo, nombre from empleado where nombre like 'A%' ;                                        		-- Busquedas con like para las 3 tablas primera letra A mayuscula, última letra a minuscula y que no contenga la cadena les entre medio de la cadena principal
+select categoria,nombreLibro,editorial,ejemplares,autor from libro where autor like '%a';
+select*from deportista where historialMedico  not like '%les%';
+
+=====================================================================================================================================================================
+
+
+Ejercicio en SQL Workbench, Se adjuntan las tablas y registros del día 19/06--------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create database segundabd character set utf8; -- Creacion de base de dato
+use segundabd;								  -- Uso de Base de Dato creada
+
+-- Crear una base de datos con 3 tablas 2 definidas y una por definir, luego agregar 15 registros
+
+create table Empleado( 						-- Primera Tabla predefinida Empleado
+idTabla int auto_increment,
+idEmpleado int,
+nombre varchar(15),
+apellidoP varchar(15),
+apellidoM varchar(15),
+edad int,
+departamento varchar(20),
+cargo varchar(30),
+sueldo int,
+fechaIngreso date,
+primary key(idTabla)
+);
+
+create table Libro(						-- Segunda Tabla predefinida Libro
+idTabla2 int auto_increment,
+idLibro int,
+nombreLibro varchar(50),
+autor varchar(50),
+editorial varchar(50),
+edicion varchar(50),
+añoPublicacion date,
+categoria varchar(50),
+ejemplares int,
+primary key(idTabla2)
+
+);
+
+create table Deportista(					-- Tercera Tabla Deportista
+idTabla3 int auto_increment,
+idDeportista int,
+nombreDeportista varchar(50),
+añosDeportista int,
+nombreDisciplina varchar(50),
+añosDeParticipacion int,
+cantidadMedalla int,
+horasPractica int,
+historialMedico text,
+fechaDeUltimaCompetencia date,
+fechaDeProximaCompetencia date,
+primary key(idTabla3)
+);
+
+
+insert into Empleado(idEmpleado,nombre,apellidoP,apellidoM,edad,departamento,cargo,sueldo,fechaIngreso)    -- 15 Registros en primera Tabla
+values(1,'Roberto','Martinez','Cepeda',40,'Finanzas','Director',8000000,"2008-03-15"),
+(2,'Juan','Aguirre','Guzman',40,'Recursos Humanos','Secretario', 800000, "2012-07-02"),
+(3,'Camilo','Pilar','Perez',30,'Control de Gestion', 'Analista', 1000000,"2015-06-04"),
+(4,'Alejandro','Mouler','Roder',56, 'Marketing', 'Promotor',2000000,"2000-09-18"),
+(5, 'Sabrina','Campos','Flores',45,'Gerencia','Director', 10000000,"1995-10-04"),
+(6,'Maria','Carmen','Carmelia',30,'Produccion','Operaria',500000,"2001-06-20"),
+(7,'Carla','Rubilar','Rubio',34,'Compras','Ejecutiva', '12000000',"2004-12-01"),
+(8,'Florencia','House','Muñoz',59,'Compras','Directora','5000000',"1999-03-05"),
+(9,'Abigail','King','Cooper', 35,'Administracion','Contable',1200000,"2007-08-04"),
+(10,'Jennifer','Muñoz','Zapata',44,'Relaciones Publicas','Representante', 3000000,"2002-09-04"),
+(11, 'Patricia','Polanco','Casas',38,'Finanzas','Cajera',400000,"2012-05-17"),
+(12,'Gabriel','Veliz','Vives', 43,'Soporte tecnico', 'Encargado', 500000, "2010-02-01"),
+(13,'Rodolfo','Biever','Velazques',42,'I+D','Laboratorista', 1800000,"2005-04-08"),
+(14,'Raul','Rivera','Ruiz', 22,'Nuevos Productos','Catador',500000, "2020-01-02"),
+(15,'Ricardo','Arjona','Gil',56, 'Almacen','Operario', 800000, "2015-04-08");
+
+alter table Libro modify edicion int;																   -- Se modifica el tipo de dato del campo edicion
+
+insert into Libro(idLibro,nombreLibro,autor,editorial,edicion,añoPublicacion,categoria,ejemplares)     -- 15 Registros de segunda tabla
+values(1,'La lanza de Libros','Chespirito','The Escritors',4,"2019-04-04",'Infantil',10),
+(2,'El Mota','Sabrinoski','Michis',1,"2020-06-05", 'Suspenso',20),
+(3,'El Suspiro','Gabriel Garcia Perez', 'Kuma',5,"2005-06-06",'Comedia',30),
+(4,'Señor de los paltos','Ricky','Rikon', 10,"1998-09-10",'Fantasía',200),
+(5,'Juan Salvador Paloma', 'Robert Aguirr', 'Cosmosis',6,"2008-02-03",'Drama',30),
+(6,'Caperucito','Sergio Lopez', 'Dingo',12,"1999-01-04",'Romance',400),
+(7,'Capos','Juan Jose de la Rosa', 'Pilis',2,"2006-06-12",'Novela Historica',25),
+(8,'Entremundos','Lia Cortesoski','Buena Onda', 20, "1950-12-12",'Aventuras',300),
+(9,'Colipan el niño Col','Abraham Lincon','Gringos',7,"2009-08-09",'Drama',20),
+(10,'Camuel Talio','Lia Cortesoski','Good Wave', 14, "1950-01-03", 'Novela grafica',300),
+(11,'Pillin el perro','Elon Must','Kroki', 16, "1992-04-01",'Cuentos',23),
+(12,'Chala head Chala','Kakaroto','Saiyajin', 24,"2020-06-15",'Comics',22),
+(13,'El valle de los cerezos','Aoi Sho','Ichigo',4,"1993-08-20",'Historico',40),
+(14,'Rayos','Centella Gabriel','Chispa',12,"1994-09-21",'Horror',32),
+(15,'Calas de amor','Jose Jose','Crespo',23,"1980-07-14",'Romance',29);
+
+																										-- 15 registros en tercera Tabla		
+insert into Deportista(idDeportista,nombreDeportista,añosDeportista,nombreDisciplina,añosDeParticipacion,cantidadMedalla,horasPractica,historialMedico,fechaDeUltimaCompetencia,fechaDeProximaCompetencia)
+values(1,'Juan',30,'Futbol',5,10,6,'Sin Lesiones recientes',"2021-01-03","2021-10-12"),
+(2,'Gabriel',20,'Karate',10,20,7,'Lesion menor en brazo',"2020-12-14","2021-09-14"),
+(3,'Jose',40,'Tenis',20,30,5,'Sin lesiones recientes',"2018-06-19","2021-07-06"),
+(4,'Camila',25,'Natacion',20,20,6,'Sin lesiones recientes',"2020-12-12","2021-06-19"),
+(5,'Gabriela',40,'Equitación',30,60,8,'Sin lesiones recieentes',"2021-03-20","2021-06-24"),
+(6,'Jose',33,'Tenis de mesa',2,1,4,'Lesion menor pierna derecha',"2021-05-22","2021-07-10"),
+(7,'Juana',22,'Ciclismo',6,6,4,'Sin lesiones', "2021-04-15","2021-06-28"),
+(8,'Raaul',62,'Arqueria',32,40,3,'Sin Lesiones',"2021-01-04","2021-07-02"),
+(9,'Sabrina',20,'Basquetbol',5,5,5,'Lesion menor hombro derecho',"2021-04-18","2021-03-06"),
+(10,'Jorge',40,'Lanzamiento de la bala', 20,15,6,'Sin lesiones',"2021-02-04","2021-07-07"),
+(11,'Felipe',25,'Maraton',15,10,6,'Sin Lesiones', "2020-12-18","2021-11-11"),
+(12,'Lia',32,'Remo sincronizado',20,20,7,'Lesion media en zona lumbar', "2020-09-13","2021-06-20"),
+(13,'Marcos',30,'Tenis de Mesa', 10,5,3,'Lesion mayor rotula pierna izquierda',"2020-01-18","2021-12-27"),
+(14,'Phillipe',40,'Cricket',20,32,6,'Sano Sano Como Lechuga', "2021-06-01","2021-12-15"),
+(15,'Anduin',20,'Esgrima',10,4,4,'Sin Lesiones',"2021-06-02","2021-08-17");
+
+
+
+select*from Empleado;   -- Se inspecciona elementos en tabla 1, se adjuntan datos obtenidos de registros en excel
+select*from Libro;	    -- Se inspecciona elementos en tabla 2, se adjuntan datos obtenidos de registros en excel
+select*from Deportista; -- Se inspecciona elementos en tabla 3, se adjuntan datos obtenidos de registros en excel
+
+
+select añosDeportista, nombreDisciplina,fechaDeUltimaCompetencia from Deportista; -- Se inspeccionan elementos en un orden distinto al de la tabla
+select autor, editorial, ejemplares from Libro; 								  -- Se inspeccionan elementos en un orden distinto al de la tabla
+select nombre, cargo, sueldo from Empleado;										  -- Se inspeccionan elementos en un orden distinto al de la tabla
+
+select fechaIngreso from Empleado;												  -- Se inspecciona solo un campo de la tabla
+select fechaDeProximaCompetencia from Deportista;								  -- Se inspecciona solo un campo de la tabla
+select categoria from Libro;													  -- Se inspecciona solo un campo de la tabla
+
+
+select*from deportista where añosDeportista=20;									  -- Se inspecciona un campo donde el igual equivale a algo
+select*from libro where edicion = 4;											  -- Se inspecciona un campo donde el igual equivale a algo
+select*from empleado where nombre = 'Juan';										  -- Se inspecciona un campo donde el igual equivale a algo
+
+select*from libro where idTabla2=7;												  -- Se inspecciona un campo donde el id de la linea de registro sea un número específico
+select*from libro where idTabla2=1;											      -- Se inspecciona un campo donde el id de la linea de registro sea un número específico
+
+select*from deportista where idTabla3=6;										  -- Se inspecciona un campo donde el id de la linea de registro sea un número específico
+select*from libro where idTabla2=10;											  -- Se inspecciona un campo donde el id de la linea de registro sea un número específico
+select*from empleado where idTabla=8;											  -- Se inspecciona un campo donde el id de la linea de registro sea un número específico
+
+select*from deportista where idTabla3>=6;										  -- Se inspecciona un campo donde el id de la linea de registro sea mayor o igual que un número
+select*from libro where idTabla2<=10;											  -- Se inspecciona un campo donde el id de la linea de registro sea menor o igual que un número
+select*from empleado where idTabla<20;											  -- Se inspecciona un campo donde el id de la linea de registro sea menor o igual que un número
+
+
+select*from empleado where fechaIngreso>"2000-01-01";							  -- Se inspecciona un campo donde la fecha de ingreso de la tabla empleado sea mayor al año 1 de Enero del 2000
+
+select*from libro where nombreLibro='Capos';
+
+select*from libro;																	-- Se modifica registros dentro de la tabla libro por repeticion de campos
+
+select*from empleado where nombre='Carla' and edad =34;								-- Se realizan busquedas donde el valor de un campo y el valor de otro son necesarios
+select*from libro where idTabla2=8 or editorial='Good Wave';						-- Se realizan busquedas donde el valor de un campo o el valor de otro son necesarios
+
+select*from libro where (nombreLibro ='Pillin el perro' or editorial='Kroki' ) or (nombreLibro= 'Caperucito' or editorial='The Escritors'); -- Se realizan busquedas con preposiciones logicas
+select*from deportista where (fechaDeProximaCompetencia>"1990-01-01" and fechaDeUltimaCompetencia<"2021-10-01") or  historialMedico= 'Sin Lesiones'; -- Se realizan busquedas con preposiciones logicas
+select*from empleado where nombre='Juan' or apellidoP='House';																						-- Se realizan busquedas con preposiciones logicas
+
+
+select*from libro where editorial in ('Kroki','The Escritors', 'Saiyajin','Good Wave');    -- Se realizan busquedas con in 
+select*from empleado where nombre in ('Juan','Sabrina','Maria','Carla');				   -- Se realizan busquedas con in 
+select*from deportista where añosDeportista in (20,21,22,23,24,25,26,27);	               -- Se realizan busquedas con in 
+
+select*from empleado where idTabla in (1,2,3,4,5,6) or idEmpleado in (5,6,7,8);			   -- Se realizan busquedas con in y con preprosicion logica or
+select*from libro where idTabla2 in (12,13,14,15) or edicion in (4,8,9,12);				   -- Se realizan busquedas con in y con preprosicion logica or
+select*from deportista where idDeportista in (3,4,5,6) and nombreDisciplina in ('Tenis de mesa','Natacion'); -- Se realizan busquedas con in y con preprosicion logica and
+
+-- 000===============================Tarea================================000
+update empleado set nombre='Francisca' where idTabla=11; -- Se actualiza nombre de empleado con update como parte de la tarea
+select*from empleado where idTabla=11;                  -- Se visualiza cambio
+
+insert into empleado (idEmpleado,nombre,apellidoP,apellidoM,edad,departamento,cargo,sueldo,fechaIngreso )  -- Se actualiza tabla empleado con un nuevo registro como tarea
+values(16,'Jose','Gomez','Diaz',26,'Soporte Tecnico', 'Asistente Tecnico', 800000,"2020-11-02");
+
+select*from empleado where idTabla=16;					-- Se visualiza empleado creado
+
+delete from empleado where idTabla=16;					-- Se borra registro de empleado en la fila 16
+
+select*from empleado where idTabla=16;					-- Se visualiza empleado borrado
