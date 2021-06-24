@@ -1,0 +1,17 @@
+6Xta Clase de Base de datos, Se realizan busqueda de registros con nuevas funciones y se repasa la clausula BETWEEN
+dentro de las nuevas funciones tenemos COUNT,MAX y MIN,SUM, AVG.
+
+
+Documentación
+
+Ordenar una lista de registros
+http://deletesql.com/viewtopic.php?f=5&t=15&start=0&sid=baa46d3725e33548056fb717393756bd
+
+(Se repasa)Conceptos basicos en SQL
+https://snmb-admin.readthedocs.io/en/latest/geotalleres/conceptos-sql/conceptos_sql.html
+
+(Se repasa)Clausula like
+http://deletesql.com/viewtopic.php?f=5&t=16
+
+Commo funciona la función Count en SQL 
+http://m.sql.11sql.com/sql-funcion-count.htm

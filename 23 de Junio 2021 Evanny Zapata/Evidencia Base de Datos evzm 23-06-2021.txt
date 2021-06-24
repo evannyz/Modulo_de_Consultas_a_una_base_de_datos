@@ -1,60 +1,91 @@
-Evidencia “DÍA 2 SEMANA 9” del 22/06:
-1 - Utilizando las tablas libro, empleado y la tercera cree las consultas para responder lo siguiente:
--	Determinar los datos de los libros con más de 100 ejemplares.
--	Determinar el nombre, apellidoP, apellidoM y cargo de los empleados que tienen un sueldo sobre los $500.000.- y que pertenecen al departamento (ustedes definen el departamento).
--	Determinar los datos de los libros que son de la primera o segunda edición del autor (definido por ustedes).
--	Determinar los Autores que tienen alguna de las siguientes ediciones: 1ra, 2da o 3ra.
--	Determinar los empleados que pertenecen al departamento (definido por ustedes).
--	Realizar consultas similares para la tercera tabla.
+Evidencia “DÍA 3 SEMANA 9” del 23/06:
+1 - Utilizando las tablas libro y empleado cree las consultas para resolver lo siguiente:
+-	Determinar los datos de los libros que no pertenecen a dos editoriales (definidas por ustedes).
+-	Determinar los datos nombreLibro, Editorial y ejemplares de los libros cuyos ejemplares se encuentren entre 100 y 330.
+-	Determinar el nombre, apellidoP y cargo de los empleados que tienen un sueldo entre $550.000.- y $750.000.-
+-	Determinar nombre, apellidoP, apellidoM, cargo, departamento y edad de los empleados que no pertenecen al departamento (departamento definido por ustedes).
 Si alguna consulta no devuelve ningún registro, cambiar los parámetros para que sí devuelva alguno.
-2 - Realizar consultas en las tres tablas con la cláusula NOT IN.
-3 - Realizar consultas en las tres tablas con el operador <>.
-4 - Realizar consultas en las tres tablas con la cláusula BETWEEN.
-5 - Realizar consultas en las tres tablas con la cláusula LIKE.
+2 - Realizar consultas en las tres tablas de siempre con la cláusula ORDER BY.
+3 - Utilizando las tablas libro y empleado cree las consultas para resolver lo siguiente:
+-	Mostrar los datos de los empleados ordenados por cargo.
+-	Mostrar el nombre, apellidoP, cargo y departamento de los empleados ordenados por departamento.
+-	Mostrar nombre, cargo y sueldo de los empleados ordenados por sueldos desde el más alto y luego desde el más bajo.
+-	Mostrar los datos de autor, nombreLibro y editorial, ordenados por editorial.
+-	Mostrar los datos de los libros ordenados por cantidad de ejemplares desde el mayor al menor.
+4 - Realizar consultas en las tres tablas de siempre con la función COUNT.
+5 - Realizar consultas en las tres tablas de siempre con la funciones MAX y MIN.
+6 - Realizar consultas en las tres tablas de siempre con la función SUM.
+7 - Realizar consultas en las tres tablas de siempre con la función AVG.
 
 
-5Ta Clase de Sql, A los registros de la base de datos del día 19/06 se realizan selects de toda la información o de información acotada de las tablas con distintas clausulas y operadores logicos , se adjuntan tablas al final
+
+6XTa Clase de Sql, A los registros de la base de datos del día 19/06 se realizan selects de toda la información o de información acotada de las tablas con distintas clausulas y operadores logicos , se adjuntan tablas al final
+
 
 
 Ejercicio en SQL Workbench, se realiza selects de información con distintas cláusulas y operadores logicos--------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------------------------
--- ================================================================================================================================================================== --
+------------------------------------------------------------------------------------------------------------------------------------------------------		
 
--- Ejercicio 5 Busquedas + busquedas en la tabla deportista
-
-select*from libro where ejemplares>=100;											-- Busqueda de los datos donde se tengan más de 100 ejemplares de libros
-select nombre,apellidoP,apellidoM, cargo from empleado where sueldo>=1000000 and departamento in ('Gerencia','I+D','');         -- Busqueda del nombre apellido materno y paterno y cargo de un empleado con un sueldo sobre 1M que pertenezca a Gerencia o a I+D
-select *from libro where ejemplares>=10 and autor in ('Jose Jose','Kakaroto','Elon Must', 'Lia Cortseoski');			-- Busqueda de datos de libro donde el stock sea superior o igual a 10 y pertenezca a ciertos autorea
-select autor from libro where ejemplares=1 or ejemplares=2 or ejemplares =3;							-- Busqueda de autores donde la edicion de su libro sea la primera, segunda o tercera edicion
-select*from empleado where departamento='Finanzas'or departamento='Compras';							-- Busqueda de datos de empleados que pertenezcan al departamento de finanzas o compras
-
-																-- Busquedas en la tabla deportista 
-select cantidadMedalla from deportista where (añosDeportista>10 and añosDeportista<=30)and cantidadMedalla>10;
-select nombreDeportista from deportista where fechaDeUltimaCompetencia>"2021-01-05" and fechaDeUltimaCompetencia<"2021-06-02";
-select fechaDeProximaCompetencia, nombreDeportista from deportista where histrorialMedico in ('Sin lesiones','Sin lesiones recientes','Sin Lesiones','Sin lesiones recieentes');
-select idDeportista from deportista where horasPractica>3;
--- ================================================================================================================================================================== --
-																-- Busquedas con el operador not in en las tres tablas
-select idDepotista,nombreDeportista,historialMedico from deportista where cantidadMedalla not in (30,5,10,4,8);
-select idTabla,apellidoP,apellidoM,departamento edad from empleado where departamento not in ('Finanzas','Compras');
-select*from libro where autor not in ('Chespirito', 'Sabrinoski','Sergio Lopez');
-
-																-- Busquedas con el operador logico <> en las tres tablas
-select sueldo, departamento, cargo from empleado where edad <> 40 and edad <> 30;
-select*from deportista where añosDeportista <> 20;
-select autor, editorial  from libro where ejemplares <> 20 and autor <> 'Juan Jose de la Rosa';
-
-																-- Busquedas con between entre dos fechas para las tres tablas
-select idTabla3, añosDeportista, nombreDeportista,fechaDeUltimaCompetencia from deportista where fechaDeUltimaCompetencia between "2020-12-31" and "2021-12-31";
-select  idEmpleado, nombre, cargo,fechaIngreso from empleado where fechaIngreso between "2000-01-01" and "2020-01-01";
-select*from libro where añoPublicacion between "1990-01-01" and "2000-01-01";
+										-- Ejercicio 1 visualizar registros con between, not in 
+select*from libro where editorial not in ('Cosmosis', 'Buena Onda');
+select nombreLibro,editorial,ejemplares from libro where ejemplares>=100 and ejemplares<=330;
+select nombreLibro,editorial,ejemplares from libro where ejemplares between 100 and 330;
+select nombre, apellidoP from empleado where sueldo between 500000 and 1200000;
+select nombre, apellidoP, apellidoM,cargo,departamento,edad from empleado where departamento not in ('Compras');
+select nombreDeportista, añosDeportista from deportista where cantidadMedalla between 10 and 30;
+select idDeportista,historialMedico,horasPractica from deportista where fechaDeUltimaCompetencia between "2021-01-01" and "2021-07-01"; 
+select añosDeParticipacion, nombreDeportista, horasPractica, historialMedico from deportista where historialMedico like 'lesion%';
 
 
-select departamento, cargo, nombre from empleado where nombre like 'A%' ;                                        		-- Busquedas con like para las 3 tablas primera letra A mayuscula, última letra a minuscula y que no contenga la cadena les entre medio de la cadena principal
-select categoria,nombreLibro,editorial,ejemplares,autor from libro where autor like '%a';
-select*from deportista where historialMedico  not like '%les%';
+										-- Busquedas con order by en las 3 tablas
 
-=====================================================================================================================================================================
+select nombre, apellidoP,apellidoM, edad, departamento, sueldo from empleado order by sueldo desc;
+select*from libro order by ejemplares desc;
+select idDeportista, nombreDeportista, historialMedico, añosDeParticipacion,cantidadMedalla from deportista order by cantidadMedalla asc;
+
+
+										-- Ejercicio 2 ordenar registros con order by
+select*from empleado order by cargo asc;
+select nombre, apellidoP,cargo, departamento from empleado order by departamento;
+select nombre,cargo,sueldo from empleado order by sueldo desc;
+select nombre,cargo,sueldo from empleado order by sueldo asc;
+select autor, nombreLibro, editorial from libro order by editorial;
+select*from libro order by ejemplares desc;
+
+
+										-- busquedas con la función count en las 3 tablas
+select count(idLibro) as cantidadLibro from libro;
+select count(sueldo) as sueldoTotal from empleado;
+select count(sueldo) as sueldoEntreCondiciones from empleado where sueldo between 500000 and 1000000;
+select count(ejemplares) as cantidadReStock from libro where ejemplares between 10 and 40;
+select count(historialMedico) as cantidadLesionados from deportista where historialMedico like 'lesion%';
+
+
+										-- busquedas con clausula min y max en las 3 tablas
+select min(cantidadMedalla) from deportista;
+select max(horasPractica) from deportista;
+select min(horasPractica), nombreDeportista, nombreDisciplina from deportista where fechaDeProximaCompetencia>"2020-12-01";
+select max(añosDeParticipacion) from deportista;
+select min(idLibro) from libro where ejemplares<300;
+select max(sueldo), nombre, cargo, departamento, idEmpleado from empleado where fechaIngreso between "1999-01-01" and "2021-01-01";
+
+
+										-- suma de una cantidad dentro del campo de algun registro dentro de las 3 tablas
+select sum(ejemplares) from libro;
+select sum(sueldo) from empleado;
+select sum(añosDeportista) from deportista;
+select sum(horasPractica) from deportista;
+select sum(edad) from empleado;
+select sum(edicion) from libro;
+
+										-- Función avg = promedio de un campo dentro del registro de las 3 tablas
+select avg(sueldo) from empleado;
+select avg(añosDeportista)from deportista;
+select avg(ejemplares) from libro;
+select avg(idEmpleado) from empleado;
+select avg(cantidadMedalla) from deportista;
+select avg(edicion) from libro;
+
 
 
 Ejercicio en SQL Workbench, Se adjuntan las tablas y registros del día 19/06--------------------------------------------------------------------------
