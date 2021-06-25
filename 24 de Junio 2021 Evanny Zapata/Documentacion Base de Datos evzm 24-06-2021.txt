@@ -1,0 +1,16 @@
+7Ma Clase de Base de datos, Se realizan búsquedas de registros con nuevas funciones en este caso 
+ORDER BY que nos permite ordenar los registros según el criterio de un campo
+y se repasan las funciones COUNT, MAX y MIN y SUM. para realizar cuentas con la coincidencias en los valores de los registros, 
+MAX que nos permite saber cual fué el maximo número entre varios registros MIN que nos permite ver el menor entre varios registros,
+y SUM que nos permite sumar valores, adicionalmente repase AVG que nos ayuda a calcular los promedios de los registros, 
+el último ejercicio a desarrollar fue parte de nueva materia vista sobre diagrama entidad relación donde reconocimos las entidades
+involucradas en una tienda de video juegos, como documentación se revisan cuales son las principales funciones en sql 
+
+
+Documentación
+
+Que es un modelo de entidad relación 
+http://juliogalindobasesdedatos.blogspot.com/2018/02/identificar-y-comprender-entidad.html
+
+Principales funciones en SQl
+https://diego.com.es/principales-funciones-en-sql
