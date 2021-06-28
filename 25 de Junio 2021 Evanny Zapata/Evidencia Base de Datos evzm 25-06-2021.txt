@@ -1,0 +1,27 @@
+
+Evidencia “DÍA 5 SEMANA 9” del 25/06:
+1 - Identificar los atributos de las entidades identificadas en el ejercicio 3 del 24/06.
+2 - Identificar las relaciones entre las mismas entidades.
+
+
+8Va Clase de Sql, Se identifican los atributos de las entidades identificadas el día anterior, mañana se agregaran las relaciones entre entidades
+
+
+Tienda virtual: Productos(productos usados o nuevos), 
+ categoria,
+ usuario(registrado o invitado),
+ Detalle Ventas, 
+ inventario virtual(Stock por regiones), 
+ servicio al cliente o soporte técnico,
+ preventas, despacho, boleta virtual, proveedores.
+
+
+Tienda virtual
+Productos->sku producto, nombre de producto, precio producto, descripcion producto, stock producto
+servicio al cliente->reclamo,devoluciones, 
+usuario-> nombre, password, email, telefono, domicilio(Lugar de despacho), rut
+tipo_usuario-> por registrar, registrado, invitado	
+Detalle de ventas->Medio de pago, boleta virtual, nro de compra, descuentos, preventas
+Despacho-> seguimiento producto, estado de producto,
+proveedor-> solicitar nuevo Stock,
+ 

@@ -1,0 +1,13 @@
+8va Clase de Base de datos, se identifican los atributos de las entidades vistas el día anterior,
+se plantea varias veces el ejercicio ya que existen entidades que asocie, eran atributos y viceversa
+para poder diferenciarlas mejor se repasa la diferencia entre ambos.
+
+
+Documentación: 
+
+Diferencia de entidad y atributo
+https://www.ibm.com/docs/es/imdm/11.6?topic=concepts-key-entity-attribute-entity-type
+
+
+Diferencia de entidad y atributo
+http://contenidos.sucerman.com/nivel2/web1/unidad2/leccion1.html

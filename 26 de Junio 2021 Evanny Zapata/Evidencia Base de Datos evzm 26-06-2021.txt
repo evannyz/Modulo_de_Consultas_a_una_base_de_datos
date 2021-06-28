@@ -1,0 +1,24 @@
+Evidencia “DÍA 6 SEMANA 9” del 26/06:
+Avance del ejercicio anterior del 25/06.
+
+9Na Clase de Sql, Se identifican los atributos de las entidades identificadas el día anterior, se adjunta avance de diagrama de relación entre entidades
+
+
+Tienda virtual: Productos(productos usados o nuevos), 
+ categoria,
+ usuario(registrado o invitado),
+ Detalle Ventas, 
+ inventario virtual(Stock por regiones), 
+ servicio al cliente o soporte técnico,
+ preventas, despacho, boleta virtual, proveedores.
+
+
+Tienda virtual
+Productos->sku producto, nombre de producto, precio producto, descripcion producto, stock producto
+servicio al cliente->reclamo,devoluciones, 
+usuario-> nombre, password, email, telefono, domicilio(Lugar de despacho), rut
+tipo_usuario-> por registrar, registrado, invitado	
+Detalle de ventas->Medio de pago, boleta virtual, nro de compra, descuentos, preventas
+Despacho-> seguimiento producto, estado de producto,
+proveedor-> solicitar nuevo Stock,
+ 

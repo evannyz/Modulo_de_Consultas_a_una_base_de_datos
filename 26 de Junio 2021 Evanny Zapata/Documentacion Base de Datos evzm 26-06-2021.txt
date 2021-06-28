@@ -1,0 +1,18 @@
+9Na Clase de Base de datos, se identifican las relaciones entre entidades y atributos en un diagrama entidad relación. 
+Se repasa la documentación del día anterior y se verifican ejemplos.
+
+
+Documentación: 
+
+Diferencia de entidad y atributo(Repaso)
+https://www.ibm.com/docs/es/imdm/11.6?topic=concepts-key-entity-attribute-entity-type
+
+
+Diferencia de entidad y atributo(Repaso)
+http://contenidos.sucerman.com/nivel2/web1/unidad2/leccion1.html
+
+Ejemplos diagrama entidad relación:
+https://www.ilerna.es/blog/informatica-comunicacion/modelo-entidad-relacion-base-de-datos/
+
+Modelo Entidad/Relación Extendido:
+https://manuel.cillero.es/doc/metodologia/metrica-3/tecnicas/modelo-entidad-relacion-extendido/
