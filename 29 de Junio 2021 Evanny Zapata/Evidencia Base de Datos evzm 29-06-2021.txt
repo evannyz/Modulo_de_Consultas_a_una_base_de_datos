@@ -1,0 +1,6 @@
+Evidencia sin nombre ni hogar del 29/06:
+Una unidad educativa desea llevar el registro de sus alumnos a través de un sistema, 
+dicha entidad cuenta con 6 carreras de 10 semestres cada una, cada semestre tiene 5 asignaturas, 
+los profesores pueden ser asignados a una o más asignaturas. Realizar modelo entidad-relación.
+
+10Ma Clase de Sql, Se realiza modelo entidad-relación con sus entidades y atributos, se adjunta diagrama.
