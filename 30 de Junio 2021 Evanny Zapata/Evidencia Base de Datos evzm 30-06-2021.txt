@@ -1,0 +1,379 @@
+Evidencia sin nombre ni hogar, parte 2, del 30/06:
+
+Realizar el modelo relacional de la base de datos de la tienda de videojuegos del ejercicio del 24/06,
+ y el de la base de datos de la unidad educativa del ejercicio del 29/06.
+
+
+11Ra Clase de Sql, Se crean las base de datos de los anteriores esquemas(Tienda virtual de videojuegos y unidad educativa), el modelo de tienda virtual se modifica para ganar coherencia, se adjuntan los scripts de la creación de ambas bases.
+
+
+
+======================================================================================================================================================
+Base de dato (Unidad educativa)-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+======================================================================================================================================================
+
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema RegistroUnidadAcademica
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema RegistroUnidadAcademica
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `RegistroUnidadAcademica` DEFAULT CHARACTER SET utf8 ;
+USE `RegistroUnidadAcademica` ;
+
+-- -----------------------------------------------------
+-- Table `RegistroUnidadAcademica`.`UnidadEducativa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RegistroUnidadAcademica`.`UnidadEducativa` (
+  `idUnidadEducativa` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL,
+  PRIMARY KEY (`idUnidadEducativa`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `RegistroUnidadAcademica`.`Carrera`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RegistroUnidadAcademica`.`Carrera` (
+  `idCarrera` INT NOT NULL AUTO_INCREMENT,
+  `NombreCarrera` VARCHAR(45) NULL,
+  `DescripciónCarrera` VARCHAR(100) NULL,
+  `idUnidadEducativa` INT NOT NULL,
+  PRIMARY KEY (`idCarrera`),
+  INDEX `fk_Carrera_UnidadEducativa_idx` (`idUnidadEducativa` ASC),
+  CONSTRAINT `fk_Carrera_UnidadEducativa`
+    FOREIGN KEY (`idUnidadEducativa`)
+    REFERENCES `RegistroUnidadAcademica`.`UnidadEducativa` (`idUnidadEducativa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `RegistroUnidadAcademica`.`Alumno`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RegistroUnidadAcademica`.`Alumno` (
+  `idAlumno` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL,
+  `ApellidoPaterno` VARCHAR(45) NULL,
+  `ApellidoMaterno` VARCHAR(45) NULL,
+  `CorreoElectronico` VARCHAR(45) NULL,
+  `NúmeroDeTelefono` VARCHAR(45) NULL,
+  `Edad` INT NULL,
+  `RUT` VARCHAR(45) NULL,
+  `TipoAlumno` VARCHAR(45) NULL,
+  `idCarrera` INT NOT NULL,
+  `idUnidadEducativa` INT NOT NULL,
+  PRIMARY KEY (`idAlumno`),
+  INDEX `fk_Alumno_UnidadEducativa_idx` (`idUnidadEducativa` ASC),
+  INDEX `fk_Alumno_Carrera_idx` (`idCarrera` ASC),
+  CONSTRAINT `fk_Alumno_UnidadEducativa`
+    FOREIGN KEY (`idUnidadEducativa`)
+    REFERENCES `RegistroUnidadAcademica`.`UnidadEducativa` (`idUnidadEducativa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Alumno_Carrera`
+    FOREIGN KEY (`idCarrera`)
+    REFERENCES `RegistroUnidadAcademica`.`Carrera` (`idCarrera`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `RegistroUnidadAcademica`.`Profesor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RegistroUnidadAcademica`.`Profesor` (
+  `idProfesor` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL,
+  `ApellidoPaterno` VARCHAR(45) NULL,
+  `TituloProfesional` VARCHAR(45) NULL,
+  `idUnidadEducativa` INT NOT NULL,
+  PRIMARY KEY (`idProfesor`),
+  INDEX `fk_Profesor_UnidadEducativa_idx` (`idUnidadEducativa` ASC),
+  CONSTRAINT `fk_Profesor_UnidadEducativa`
+    FOREIGN KEY (`idUnidadEducativa`)
+    REFERENCES `RegistroUnidadAcademica`.`UnidadEducativa` (`idUnidadEducativa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `RegistroUnidadAcademica`.`Semestre`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RegistroUnidadAcademica`.`Semestre` (
+  `idSemestre` INT NOT NULL AUTO_INCREMENT,
+  `NumeroSemestre` VARCHAR(45) NULL,
+  `idCarrera` INT NOT NULL,
+  PRIMARY KEY (`idSemestre`),
+  INDEX `fk_Semestre_Carrera_idx` (`idCarrera` ASC),
+  CONSTRAINT `fk_Semestre_Carrera`
+    FOREIGN KEY (`idCarrera`)
+    REFERENCES `RegistroUnidadAcademica`.`Carrera` (`idCarrera`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `RegistroUnidadAcademica`.`Asginatura`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RegistroUnidadAcademica`.`Asginatura` (
+  `idAsginatura` INT NOT NULL AUTO_INCREMENT,
+  `NombreAsignatura` VARCHAR(45) NULL,
+  `NúmeroAsignatura` VARCHAR(45) NULL,
+  `idSemestre` INT NOT NULL,
+  PRIMARY KEY (`idAsginatura`),
+  INDEX `fk_Asignatura_Semestre_idx` (`idSemestre` ASC),
+  CONSTRAINT `fk_Asignatura_Semestre`
+    FOREIGN KEY (`idSemestre`)
+    REFERENCES `RegistroUnidadAcademica`.`Semestre` (`idSemestre`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `RegistroUnidadAcademica`.`ProfesorRelataAsignatura`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RegistroUnidadAcademica`.`ProfesorRelataAsignatura` (
+  `idProfesorRelataAsignatura` INT NOT NULL AUTO_INCREMENT,
+  `idAsignatura` INT NOT NULL,
+  `idProfesor` INT NOT NULL,
+  PRIMARY KEY (`idProfesorRelataAsignatura`),
+  INDEX `fk_ProfesorRelataAsignatura_Asignatura_idx` (`idAsignatura` ASC),
+  INDEX `fk_ProfesorRelataAsignatura_Profesor_idx` (`idProfesor` ASC),
+  CONSTRAINT `fk_ProfesorRelataAsignatura_Asignatura`
+    FOREIGN KEY (`idAsignatura`)
+    REFERENCES `RegistroUnidadAcademica`.`Asginatura` (`idAsginatura`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProfesorRelataAsignatura_Profesor`
+    FOREIGN KEY (`idProfesor`)
+    REFERENCES `RegistroUnidadAcademica`.`Profesor` (`idProfesor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `RegistroUnidadAcademica`.`AlumnoInscribeAsignaturas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RegistroUnidadAcademica`.`AlumnoInscribeAsignaturas` (
+  `idAlumnoInscribeAsignaturas` INT NOT NULL AUTO_INCREMENT,
+  `IdAlumno` INT NOT NULL,
+  `idAsignatura` INT NOT NULL,
+  PRIMARY KEY (`idAlumnoInscribeAsignaturas`),
+  INDEX `fk_AlumnoInscribeAsignaturas_Asignatura_idx` (`idAsignatura` ASC),
+  INDEX `fk_AlumnoInscribeAsignaturas_Alumno_idx` (`IdAlumno` ASC),
+  CONSTRAINT `fk_AlumnoInscribeAsignaturas_Asignatura`
+    FOREIGN KEY (`idAsignatura`)
+    REFERENCES `RegistroUnidadAcademica`.`Asginatura` (`idAsginatura`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_AlumnoInscribeAsignaturas_Alumno`
+    FOREIGN KEY (`IdAlumno`)
+    REFERENCES `RegistroUnidadAcademica`.`Alumno` (`idAlumno`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+======================================================================================================================================================
+Base de dato (Tienda Virtual de Videojuegos)----------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+======================================================================================================================================================
+
+
+
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema TiendaVirtualVideojuegos
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema TiendaVirtualVideojuegos
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `TiendaVirtualVideojuegos` DEFAULT CHARACTER SET utf8 ;
+USE `TiendaVirtualVideojuegos` ;
+
+-- -----------------------------------------------------
+-- Table `TiendaVirtualVideojuegos`.`TipoDeUsuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TiendaVirtualVideojuegos`.`TipoDeUsuario` (
+  `idTipoDeUsuario` INT NOT NULL AUTO_INCREMENT,
+  `TipoDeUsuario` VARCHAR(45) NULL,
+  PRIMARY KEY (`idTipoDeUsuario`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TiendaVirtualVideojuegos`.`Usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TiendaVirtualVideojuegos`.`Usuario` (
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL,
+  `ApellidoP` VARCHAR(45) NULL,
+  `ApellidoM` VARCHAR(45) NULL,
+  `Edad` INT NULL,
+  `Clave` VARCHAR(11) NULL,
+  `NombreDeUsuario` VARCHAR(45) NULL,
+  `idTipoDeUsuario` INT NOT NULL,
+  PRIMARY KEY (`idUsuario`),
+  INDEX `fk_Usuario_TipoDeUsuario_idx` (`idTipoDeUsuario` ASC),
+  CONSTRAINT `fk_Usuario_TipoDeUsuario`
+    FOREIGN KEY (`idTipoDeUsuario`)
+    REFERENCES `TiendaVirtualVideojuegos`.`TipoDeUsuario` (`idTipoDeUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TiendaVirtualVideojuegos`.`Despacho`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TiendaVirtualVideojuegos`.`Despacho` (
+  `idDespacho` INT NOT NULL AUTO_INCREMENT,
+  `EstadoDespacho` VARCHAR(45) NULL,
+  `Bodega` VARCHAR(45) NULL,
+  `idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idDespacho`),
+  INDEX `fk_Despacho_Usuario_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_Despacho_Usuario`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `TiendaVirtualVideojuegos`.`Usuario` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TiendaVirtualVideojuegos`.`TipoProducto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TiendaVirtualVideojuegos`.`TipoProducto` (
+  `idTipoProducto` INT NOT NULL AUTO_INCREMENT,
+  `TipoProducto` VARCHAR(45) NULL,
+  PRIMARY KEY (`idTipoProducto`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TiendaVirtualVideojuegos`.`Producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TiendaVirtualVideojuegos`.`Producto` (
+  `idProducto` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL,
+  `Descripción` VARCHAR(200) NULL,
+  `SKU` VARCHAR(45) NULL,
+  `StockProducto` INT NULL,
+  `idTipoProducto` INT NOT NULL,
+  PRIMARY KEY (`idProducto`),
+  INDEX `fk_Producto_TipoProducto_idx` (`idTipoProducto` ASC),
+  CONSTRAINT `fk_Producto_TipoProducto`
+    FOREIGN KEY (`idTipoProducto`)
+    REFERENCES `TiendaVirtualVideojuegos`.`TipoProducto` (`idTipoProducto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TiendaVirtualVideojuegos`.`DetalleDeVenta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TiendaVirtualVideojuegos`.`DetalleDeVenta` (
+  `idDetalleDeVenta` INT NOT NULL AUTO_INCREMENT,
+  `NumeroDeVenta` VARCHAR(45) NULL,
+  `HoraDeVenta` TIME NULL,
+  `FechaDeVenta` DATE NULL,
+  `CantidadProducto` INT NULL,
+  `TipoPago` VARCHAR(45) CHARACTER SET 'armscii8' NULL,
+  `idDespacho` INT NOT NULL,
+  `idUsuario` INT NOT NULL,
+  `idProducto` INT NOT NULL,
+  PRIMARY KEY (`idDetalleDeVenta`),
+  INDEX `fk_DetalleDeVenta_Despacho_idx` (`idDespacho` ASC),
+  INDEX `fk_DetalleDeVenta_Usuario_idx` (`idUsuario` ASC),
+  INDEX `fk_DetalleDeVenta_Producto_idx` (`idProducto` ASC),
+  CONSTRAINT `fk_DetalleDeVenta_Despacho`
+    FOREIGN KEY (`idDespacho`)
+    REFERENCES `TiendaVirtualVideojuegos`.`Despacho` (`idDespacho`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_DetalleDeVenta_Usuario`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `TiendaVirtualVideojuegos`.`Usuario` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_DetalleDeVenta_Producto`
+    FOREIGN KEY (`idProducto`)
+    REFERENCES `TiendaVirtualVideojuegos`.`Producto` (`idProducto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TiendaVirtualVideojuegos`.`Proveedor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TiendaVirtualVideojuegos`.`Proveedor` (
+  `idProveedor` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL,
+  `ApellidoP` VARCHAR(45) NULL,
+  `ApellidoM` VARCHAR(45) NULL,
+  `NúmeroGuiaDespacho` VARCHAR(45) NULL,
+  PRIMARY KEY (`idProveedor`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TiendaVirtualVideojuegos`.`Abastecimiento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TiendaVirtualVideojuegos`.`Abastecimiento` (
+  `idAbastecimiento` INT NOT NULL AUTO_INCREMENT,
+  `OrdenAbestecimiento` VARCHAR(45) NULL,
+  `idProducto` INT NOT NULL,
+  `idProveedor` INT NOT NULL,
+  `DireccionBodegaAbastecimiento` VARCHAR(100) NULL,
+  `ProductoAbastecer` VARCHAR(45) NULL,
+  `CantidadAbastecer` INT NULL,
+  `precioSinIva` INT NULL,
+  `precioConIva` INT NULL,
+  PRIMARY KEY (`idAbastecimiento`),
+  INDEX `fk_Abastecimiento_Producto_idx` (`idProducto` ASC),
+  INDEX `fk_AbastecimientoProveedor__idx` (`idProveedor` ASC),
+  CONSTRAINT `fk_Abastecimiento_Producto`
+    FOREIGN KEY (`idProducto`)
+    REFERENCES `TiendaVirtualVideojuegos`.`Producto` (`idProducto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_AbastecimientoProveedor_`
+    FOREIGN KEY (`idProveedor`)
+    REFERENCES `TiendaVirtualVideojuegos`.`Proveedor` (`idProveedor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
