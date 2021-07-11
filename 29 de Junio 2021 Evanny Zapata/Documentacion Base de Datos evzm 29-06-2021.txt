@@ -1,0 +1,18 @@
+10Ma Clase de Base de datos, se realiza el modelo entidad relación de una unidad educativa, se repasan conceptos de ayer.
+
+
+
+Documentación: 
+
+
+Ejemplos diagrama entidad relación(Repaso):
+https://www.ilerna.es/blog/informatica-comunicacion/modelo-entidad-relacion-base-de-datos/
+
+Modelo Entidad/Relación Extendido(Repaso):
+https://manuel.cillero.es/doc/metodologia/metrica-3/tecnicas/modelo-entidad-relacion-extendido/
+
+cardinalidad en modelos entidad relación:
+https://es.wikipedia.org/wiki/Modelo_entidad-relaci%C3%B3n
+
+Tipos de cardinalidad 
+https://www.youtube.com/watch?v=rXyt8sjXL0A&ab_channel=AngelicaVanegasCastro

@@ -1,0 +1,17 @@
+12Da Clase de Base de datos, Según los modelos entidad relacion en Workbench, se cargan registros y se le realizan distintas consultas.
+
+
+
+Documentación: 
+
+Modelo entidad relación Workbench(Repaso)
+https://www.youtube.com/watch?v=hfE0_Mme32k&t=292s&ab_channel=FranklinGarc%C3%ADa
+
+Cómo Crear Diagrama Entidad Relación Con MySQL Workbench(Repaso)
+https://www.youtube.com/watch?v=ovv8DIoaZ1s&ab_channel=CyberWork
+
+Manipulación de registros en un modelo ERP Worckbench
+https://www.youtube.com/watch?v=j8zYIpFSjFE&t=276s&ab_channel=CecytesProgramacion
+
+Conceptos fundamentales de una base de datos
+https://www.youtube.com/watch?v=h6aGdYj7xAw&ab_channel=OpenCourseWareTecnologica
